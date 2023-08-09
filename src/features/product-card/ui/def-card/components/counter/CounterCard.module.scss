@@ -1,0 +1,19 @@
+.counterCard {
+	max-width: 238px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 15px;
+	border: 2px solid #d1d1d1;
+	max-height: 32px;
+	padding: 9px 0;
+	color: #000;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 0%; /* 0px */
+	.counter {
+		// padding: 16px 40px;
+	}
+}

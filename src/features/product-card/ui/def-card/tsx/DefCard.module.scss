@@ -1,0 +1,95 @@
+.defCard {
+	width: 347px;
+	height: 431px;
+	flex-shrink: 0;
+	border-radius: 15px;
+	border: 2px solid #d1d1d1;
+	background: #fcfcfc;
+	font-family: var(--poppins);
+	.imageBlock {
+		width: 100%;
+		height: 234px;
+		flex-shrink: 0;
+		border-radius: 13px;
+		background: #dedede;
+		position: relative;
+		z-index: 10;
+		.character {
+			font-family: var(--roboto);
+			position: absolute;
+			top: 12px;
+			display: flex;
+			max-width: 120px;
+			padding: 4px 10px 4px 8px;
+			align-items: center;
+			gap: 8px;
+			border-radius: 0px 15px 15px 0px;
+			background: #fff;
+			color: #7c7c7c;
+			font-size: 12px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
+	}
+	.infoBlock {
+		padding: 16px;
+		.nd {
+			padding-bottom: 17px;
+		}
+		.prices {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid #d9d9d9;
+			.endPrice {
+				color: #282828;
+				font-size: 20px;
+				font-style: normal;
+				font-weight: 700;
+				line-height: 150%; /* 30px */
+			}
+			.oldPrice {
+				color: #282828;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 150%; /* 24px */
+			}
+		}
+		.counter {
+			margin-top: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			.basket {
+				display: flex;
+				padding: 4px 20px;
+				justify-content: center;
+				align-items: center;
+				flex-shrink: 0;
+				border-radius: 15px;
+				border: 2px solid #d1d1d1;
+				background: #fff;
+				transition: 0.3s;
+			}
+			.basket_inBasket {
+				display: flex;
+				padding: 4px 20px;
+				justify-content: center;
+				align-items: center;
+				flex-shrink: 0;
+				border-radius: 15px;
+				border: 2px solid #7b7c7e;
+				background: #7b7c7e;
+				transition: 0.3s;
+			}
+
+			.basket:hover {
+				background: #d1d1d1;
+			}
+		}
+	}
+}
