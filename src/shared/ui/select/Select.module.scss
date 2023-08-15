@@ -1,0 +1,26 @@
+// Select.module.scss
+/* Добавьте стили для селекта в файл Select.module.scss */
+/* Пример стилей, вы можете дополнить их по вашему дизайну */
+.selectWrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.select {
+	appearance: none;
+	padding: 10px 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: white;
+	width: 200px;
+	font-size: 16px;
+	cursor: pointer;
+	outline: none;
+}
+
+.selectArrow {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+}
