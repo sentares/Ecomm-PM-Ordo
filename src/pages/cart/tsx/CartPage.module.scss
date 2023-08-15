@@ -1,0 +1,33 @@
+.cartPage {
+	display: flex;
+	margin: 50px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	.blocks {
+		max-width: 1440px;
+		width: 100%;
+		display: flex;
+		padding: 0 20px;
+		// padding: 0 30px;
+		justify-content: space-between;
+		.productsBlock {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			gap: 20px;
+		}
+	}
+}
+.nothing {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 46px;
+	font-weight: 700;
+}

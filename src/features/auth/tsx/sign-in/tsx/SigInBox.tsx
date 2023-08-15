@@ -1,5 +1,7 @@
+import useAuth from 'features/auth/model/hooks/useAuth'
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react'
 import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
 import Input from 'shared/ui/Input/Input'
@@ -10,7 +12,7 @@ interface SignInBoxProps {
 
 const SignInBox = ({ title }: SignInBoxProps) => {
 	const [formData, setFormData] = useState({
-		email: '',
+		username: '',
 		password: '',
 		isSaw: false,
 	})
@@ -23,7 +25,17 @@ const SignInBox = ({ title }: SignInBoxProps) => {
 		setFormData(prevData => ({ ...prevData, isSaw: !prevData.isSaw }))
 	}
 
-	const { email, password, isSaw } = formData
+	const { username, password, isSaw } = formData
+
+	const { login, isLoading } = useAuth()
+
+	const handleClickAuth = () => {
+		if (username.trim().length && password.trim().length) {
+			login({ username, password })
+		} else {
+			toast('Заполните все поля')
+		}
+	}
 
 	return (
 		<div className={cls.signInBox}>
@@ -38,10 +50,10 @@ const SignInBox = ({ title }: SignInBoxProps) => {
 						<Input
 							labelStart={<Mail style={{ width: 37, height: 37 }} />}
 							classOfStyle='auth'
-							placeholder='Enter email'
-							value={email}
+							placeholder='Enter username'
+							value={username}
 							onChange={handleChange}
-							name='email'
+							name='username'
 						/>
 					</div>
 					<div className={cls.inputs}>
@@ -78,7 +90,13 @@ const SignInBox = ({ title }: SignInBoxProps) => {
 					Forget Password
 				</div>
 				<div className={cls.buttonBlock}>
-					<Button theme={ButtonTheme.BIG}>Sign In</Button>
+					<Button
+						theme={ButtonTheme.BIG}
+						onClick={handleClickAuth}
+						disabled={isLoading}
+					>
+						Sign In
+					</Button>
 				</div>
 				<p className={cls.haveAcc}>
 					Don’t have an account?

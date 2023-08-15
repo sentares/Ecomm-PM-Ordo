@@ -1,0 +1,39 @@
+.totalBlock {
+	max-width: 426px;
+	height: 628px;
+	border-radius: 8px;
+	background: #f2f4f8;
+	flex-shrink: 0;
+	padding: 25px;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+
+	.deliv {
+		margin-top: 12px;
+		display: flex;
+		flex-wrap: wrap;
+		color: #727272;
+		font-size: 15px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 150%; /* 22.5px */
+	}
+	.tot {
+		margin-top: 86px;
+		.countProd {
+			color: #000;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 150%; /* 22.5px */
+		}
+		.total {
+			color: #000;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 150%; /* 24px */
+		}
+	}
+}

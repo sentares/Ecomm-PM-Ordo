@@ -1,5 +1,6 @@
 .modal {
-	top: -140px;
+	width: 100%;
+	top: -160px;
 	right: 0;
 	position: absolute;
 	z-index: 20;
@@ -7,7 +8,25 @@
 	border-radius: 14px;
 	background-color: #fff;
 	box-shadow: 0px 10px 30px 10px #e6e6e6;
+	transition: 0.3s;
+	opacity: 0;
+	animation: show 0.4s 1;
+	animation-fill-mode: forwards;
+	animation-delay: 0s;
+	@keyframes show {
+		0% {
+			top: 0;
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 	h2 {
 		font-family: 'Poppins';
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
 	}
 }

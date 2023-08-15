@@ -1,10 +1,16 @@
+import { IProduct } from 'entitise/Product/model/type'
+
 export type ResponseDataType = {
-	productId: string
+	productId: number
 	count: number
+	inBasket: boolean
 }
 
 export type ProductDataType = {
-	data: ResponseDataType[]
+	products: IProduct[]
+	basketProducts: IProduct[]
+	dataBasket: ResponseDataType[]
 	isLoading: boolean
 	error: string
+	oneProduct: IProduct
 }

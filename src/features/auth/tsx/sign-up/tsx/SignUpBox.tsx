@@ -1,5 +1,8 @@
+import useAuth from 'features/auth/model/hooks/useAuth'
+import { AuthForm } from 'features/auth/model/types/authType'
 import { Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
 import Input from 'shared/ui/Input/Input'
@@ -12,11 +15,13 @@ interface SignUpBoxProps {
 const SignUpBox = ({ title }: SignUpBoxProps) => {
 	const [formData, setFormData] = useState({
 		name: '',
-		lastName: '',
+		username: '',
 		email: '',
 		password: '',
 		isSaw: false,
 	})
+
+	const { register } = useAuth()
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target
@@ -27,7 +32,23 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 		setFormData(prevData => ({ ...prevData, isSaw: !prevData.isSaw }))
 	}
 
-	const { name, lastName, email, password, isSaw } = formData
+	const { name, username, email, password, isSaw } = formData
+
+	const clickAuth = (item: AuthForm) => {
+		register(item)
+	}
+
+	const handleClickAuth = () => {
+		if (
+			username.trim().length &&
+			// email.trim().length &&
+			password.trim().length
+		) {
+			clickAuth({ username, email, password })
+		} else {
+			toast('Заполните все поля')
+		}
+	}
 
 	return (
 		<div className={cls.signInBox}>
@@ -38,7 +59,7 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 					eiusmod tempor
 				</p>
 				<form>
-					<div className={cls.nameBlock}>
+					{/* <div className={cls.nameBlock}>
 						<div className={cls.inputs}>
 							<Input
 								classOfStyle='auth'
@@ -47,18 +68,18 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 								onChange={handleChange}
 								name='name'
 							/>
-						</div>
-						<div className={cls.inputs}>
-							<Input
-								classOfStyle='auth'
-								placeholder='Enter Last Name'
-								value={lastName}
-								onChange={handleChange}
-								name='lastName'
-							/>
-						</div>
-					</div>
+						</div> */}
 					<div className={cls.inputs}>
+						<Input
+							classOfStyle='auth'
+							placeholder='Enter User Name'
+							value={username}
+							onChange={handleChange}
+							name='username'
+						/>
+					</div>
+					{/* </div> */}
+					{/* <div className={cls.inputs}>
 						<Input
 							classOfStyle='auth'
 							placeholder='Enter email'
@@ -66,7 +87,7 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 							onChange={handleChange}
 							name='email'
 						/>
-					</div>
+					</div> */}
 					<div className={cls.inputs}>
 						<Input
 							classOfStyle='auth'
@@ -92,7 +113,9 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 					</div>
 				</form>
 				<div className={cls.buttonBlock}>
-					<Button theme={ButtonTheme.BIG}>{title}</Button>
+					<Button theme={ButtonTheme.BIG} onClick={handleClickAuth}>
+						{title}
+					</Button>
 				</div>
 				<p className={cls.haveAcc}>
 					Don’t have an account?

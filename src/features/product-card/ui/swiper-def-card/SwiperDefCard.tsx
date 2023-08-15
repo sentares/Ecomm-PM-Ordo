@@ -1,17 +1,22 @@
+import { ThunkDispatch } from '@reduxjs/toolkit'
+import { ProductState } from 'features/product-card/model/selectors/ProductState'
+import { getData } from 'features/product-card/model/slices/ProductSlice'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { useState } from 'react'
-import { Products } from 'shared/constant/Products'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
+import CardLoader from '../def-card/skeleton/PhLoader'
 import DefCard from '../def-card/tsx/DefCard'
 import cls from './SwiperDefCard.module.scss'
 
 const SwiperDefCard = () => {
-	const Prod = Products
 	const [swipePosition, setSwipePosition] = useState(0)
 	const containerWidth = 367 //width of card
 
+	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+
 	const handleNextClick = () => {
-		if (swipePosition < Prod.length - 2) {
+		if (swipePosition < products.length - 2) {
 			setSwipePosition(prevPosition => prevPosition + 1)
 		}
 	}
@@ -21,6 +26,8 @@ const SwiperDefCard = () => {
 			setSwipePosition(prevPosition => prevPosition - 1)
 		}
 	}
+
+	const { products, dataBasket, isLoading, error } = useSelector(ProductState)
 
 	return (
 		<div className={cls.swiper}>
@@ -39,15 +46,23 @@ const SwiperDefCard = () => {
 						transform: `translateX(-${swipePosition * containerWidth}px)`,
 					}}
 				>
-					{Prod.map((product, index) => (
-						<DefCard key={index} product={product} />
-					))}
+					{products.length ? (
+						products.map((product, index) => (
+							<DefCard key={index} product={product} />
+						))
+					) : (
+						<>
+							<CardLoader />
+							<CardLoader />
+							<CardLoader />
+						</>
+					)}
 				</div>
 			</div>
 			<Button
 				className={cls.btn}
 				onClick={handleNextClick}
-				disabled={swipePosition >= Prod.length - 2}
+				disabled={swipePosition >= products.length - 2}
 				theme={ButtonTheme.NAV}
 			>
 				<ArrowRight />

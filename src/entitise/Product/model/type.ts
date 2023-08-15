@@ -1,9 +1,30 @@
 export interface IProduct {
-	id: string
-	name: string
+	amount: number
+	availability: string
+	brand: string
+	category: string
 	description: string
-	price: string | number
-	oldPrice?: string | number
-	discond: boolean
-	hit?: boolean
+	id: number
+	images: Image[]
+	issued_at: string
+	issuing_country: string
+	name: string
+	power: number
+	price: number
+	reviews: Review[]
+	size: string
+	state: string
+	store: number
+	type: string
+	liked?: boolean
+}
+
+export interface Image {
+	image: string
+}
+
+export interface Review {
+	author: string
+	text: string
+	rating: number
 }

@@ -1,0 +1,85 @@
+.basketCard {
+	width: 894px;
+	// height: 251px;
+	border-radius: 15px;
+	background: #f2f4f8;
+	display: flex;
+	padding: 16px;
+	gap: 12px;
+	transition: 0.3s;
+	&:hover {
+		scale: 1.01;
+		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	}
+	.imageBlock {
+		width: 324px;
+		height: 220px;
+		border-radius: 15px;
+		background: #d9d9d9;
+		.image {
+			width: 100%;
+			height: 100%;
+			border-radius: 14px;
+			box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		}
+	}
+	.InfoBlock {
+		width: 100%;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.nd {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			.shortInf {
+				width: 280px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.price {
+					color: #282828;
+					font-family: 'Poppins';
+					font-size: 20px;
+					font-style: normal;
+					font-weight: 600;
+					line-height: 150%; /* 30px */
+				}
+			}
+
+			.name {
+				color: #000;
+				font-size: 32px;
+				font-style: normal;
+				font-weight: 500;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				.trash {
+					cursor: pointer;
+					padding: 0 6px;
+					border-radius: 6px;
+					transition: 0.3s;
+					&:hover {
+						background: #d9d9d9;
+						color: #af0e0e;
+						scale: 1.1;
+					}
+				}
+			}
+		}
+		.total {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			.totPrice {
+				color: #282828;
+				font-family: 'Poppins';
+				font-size: 20px;
+				font-style: normal;
+				font-weight: 600;
+			}
+		}
+	}
+}

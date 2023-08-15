@@ -16,6 +16,9 @@
 		flex-shrink: 0;
 		border-radius: 5px;
 		background: #efefef;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 	.search {
 		display: flex;
@@ -35,14 +38,27 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 5px;
+		padding: 8px 10px 6px 10px;
 		cursor: pointer;
 		border-radius: 5px;
+		&:hover {
+			background: var(--cool-gray-10);
+		}
 		.Icons {
 			color: var(--cool-gray-60);
+			line-height: 0;
 		}
 	}
-	.iconBlock:hover {
+	.active {
+		scale: 1.1;
+		transition: 0.3s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 8px 10px 6px 10px;
+		cursor: pointer;
+		border-radius: 5px;
 		background: var(--cool-gray-10);
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	}
 }

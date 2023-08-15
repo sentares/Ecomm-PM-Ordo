@@ -1,15 +1,19 @@
-import { Home, Phone, Search, ShoppingCart, User } from 'lucide-react'
+import { Search } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
 import Input from 'shared/ui/Input/Input'
-import Select from 'shared/ui/select/Select'
-//@ts-ignore
+import { NavConfig } from '../constant/NavConfig'
 import cls from './Navbar.module.scss'
-// @ts-ignore
-import { ReactComponent as WhatsapIcon } from 'shared/assets/svg/bi_whatsapp.svg'
+import React from 'react'
 
 const Navbar = () => {
+	const { NavList } = NavConfig()
+	const location = useLocation()
+
 	return (
 		<div className={cls.navbar}>
-			<div className={cls.logo}></div>
+			<Link to={'/'}>
+				<div className={cls.logo}>HOME</div>
+			</Link>
 			<div className={cls.search}>
 				<Input
 					classOfStyle={'search'}
@@ -17,24 +21,19 @@ const Navbar = () => {
 					placeholder='Что вы ищите?'
 				/>
 			</div>
-			<div className={cls.iconBlock}>
-				<Phone className={cls.Icons} />
-			</div>
-			<div>
-				<Select />
-			</div>
-			<div className={cls.iconBlock}>
-				<Home className={cls.Icons} />
-			</div>
-			<div className={cls.iconBlock}>
-				<WhatsapIcon className={cls.Icons} />
-			</div>
-			<div className={cls.iconBlock}>
-				<User className={cls.Icons} />
-			</div>
-			<div className={cls.iconBlock}>
-				<ShoppingCart className={cls.Icons} />
-			</div>
+			{NavList.map(item => (
+				<div
+					key={item.id}
+					className={`${cls.iconBlock} ${
+						location.pathname === item.link ? cls.active : ''
+					}`}
+				>
+					<Link to={item.link ? item.link : ''}>
+						{item.icon &&
+							React.createElement(item.icon, { className: cls.Icons })}
+					</Link>
+				</div>
+			))}
 		</div>
 	)
 }

@@ -6,6 +6,12 @@
 	border: 2px solid #d1d1d1;
 	background: #fcfcfc;
 	font-family: var(--poppins);
+	&.blurred {
+		backdrop-filter: blur(80px);
+		background-color: rgba (0, 0, 0, 0.9);
+		background: #dedede;
+		transition: 0.3s;
+	}
 	.imageBlock {
 		width: 100%;
 		height: 234px;
@@ -14,6 +20,38 @@
 		background: #dedede;
 		position: relative;
 		z-index: 10;
+		.noLiked {
+			position: absolute;
+			top: 6px;
+			right: 6px;
+			transition: 0.3s;
+			cursor: pointer;
+			color: #797979;
+			width: 30px;
+			height: 30px;
+			&:hover {
+				fill: #af0e0e;
+				color: #af0e0e;
+				scale: 1.1;
+			}
+		}
+		.liked {
+			position: absolute;
+			top: 6px;
+			right: 6px;
+			transition: 0.3s;
+			cursor: pointer;
+			fill: #af0e0e;
+			color: #af0e0e;
+			width: 30px;
+			height: 30px;
+			&:hover {
+				// fill: #af0e0e;
+				color: #af0e0e;
+				scale: 1.1;
+			}
+		}
+
 		.character {
 			font-family: var(--roboto);
 			position: absolute;
@@ -31,11 +69,23 @@
 			font-weight: 400;
 			line-height: normal;
 		}
+		.img {
+			width: 90%;
+			height: 100%;
+			border-radius: 14px;
+			box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 4px 0px;
+		}
 	}
 	.infoBlock {
 		padding: 16px;
 		.nd {
 			padding-bottom: 17px;
+			color: black;
+			.desc {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		}
 		.prices {
 			display: flex;
@@ -59,6 +109,7 @@
 			}
 		}
 		.counter {
+			width: 100%;
 			margin-top: 8px;
 			display: flex;
 			align-items: center;
@@ -74,6 +125,7 @@
 				border: 2px solid #d1d1d1;
 				background: #fff;
 				transition: 0.3s;
+				cursor: pointer;
 			}
 			.basket_inBasket {
 				display: flex;
@@ -82,9 +134,14 @@
 				align-items: center;
 				flex-shrink: 0;
 				border-radius: 15px;
-				border: 2px solid #7b7c7e;
-				background: #7b7c7e;
+				border: 2px solid #009455;
+				background: #009455;
 				transition: 0.3s;
+				cursor: pointer;
+				&:hover {
+					border: 2px solid #d1d1d1;
+					background: #d1d1d1;
+				}
 			}
 
 			.basket:hover {
