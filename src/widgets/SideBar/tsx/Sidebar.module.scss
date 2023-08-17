@@ -1,0 +1,25 @@
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: -300px; /* Начальное положение за пределами экрана */
+	width: 300px;
+	height: 100vh; /* Занимает всю высоту экрана */
+	background-color: #333;
+	color: #fff;
+	transition: left 0.3s ease;
+	z-index: 30;
+}
+
+.open {
+	position: -ms-page;
+	height: 100vh;
+	left: 0;
+	margin-right: 0;
+	width: 288px;
+	height: 100%;
+	border-left: 1px solid #d1d1d1;
+	background: #d8d8d8;
+	color: #fff;
+	transition: left 0.3s ease;
+	// z-index: 30;
+}

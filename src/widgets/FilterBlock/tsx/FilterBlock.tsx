@@ -1,12 +1,18 @@
 //@ts-ignore
 import { ReactComponent as SliderIcon } from 'shared/assets/svg/mifilter.svg'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
-import { DropDown } from 'features/filter/dropDown/DropDown'
+import { DropDown } from 'features/filter/tsx/dropDown/DropDown'
 import Input from 'shared/ui/Input/Input'
 import { Select } from 'shared/ui/select/Select'
 import cls from './FilterBlock.module.scss'
 import { useState } from 'react'
 import { Search } from 'lucide-react'
+import { useDispatch } from 'react-redux'
+import { ThunkDispatch } from '@reduxjs/toolkit'
+import { filterActions } from 'features/filter/model/slices/FilterSlice'
+import { useSelector } from 'react-redux'
+import { FilterState } from 'features/filter/model/selectors/FilterState'
+import Slidebar from 'widgets/SideBar/tsx/Sidebar'
 
 const FilterBlock = () => {
 	const optionsCategory = [
@@ -57,6 +63,7 @@ const FilterBlock = () => {
 	]
 
 	const [activeDropdown, setActiveDropdown] = useState('')
+	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
 	const handleDropdownClick = (dropdownId: string) => {
 		setActiveDropdown(dropdownId)
@@ -65,50 +72,64 @@ const FilterBlock = () => {
 	const closeDropdowns = () => {
 		setActiveDropdown('')
 	}
+
+	const handleClickFilterIcon = () => {
+		dispatch(filterActions.setOpenSidebar(!isSlidebarOpen))
+	}
+
+	const { isSlidebarOpen } = useSelector(FilterState)
+
 	return (
-		<div className={cls.filterBlock}>
-			<div className={cls.icon}>
-				<SliderIcon />
-			</div>
-			<div className={cls.dropBlock}>
-				<DropDown
-					placeholder='Country'
-					options={optionsCountry}
-					isActive={activeDropdown === 'country'}
-					onClick={handleDropdownClick.bind(null, 'country')}
-					onClose={closeDropdowns}
-				/>
-			</div>
-			<div className={cls.dropBlock}>
-				<DropDown
-					placeholder='City'
-					options={optionsCity}
-					isActive={activeDropdown === 'city'}
-					onClick={handleDropdownClick.bind(null, 'city')}
-					onClose={closeDropdowns}
-				/>{' '}
-			</div>
-			<div className={cls.dropBlock}>
-				<DropDown
-					placeholder='Category'
-					options={optionsCategory}
-					isActive={activeDropdown === 'category'}
-					onClick={handleDropdownClick.bind(null, 'category')}
-					onClose={closeDropdowns}
-				/>
-			</div>
-			<div className={cls.seacrh}>
-				<Input
-					labelStart={<Search />}
-					classOfBlock='split'
-					placeholder='search'
-					className={cls.searchInput}
-				/>
-			</div>
-			<div>
-				<Button theme={ButtonTheme.DEFAULT} className={cls.button}>
-					Search
-				</Button>
+		<div className={cls.filterContainer}>
+			{isSlidebarOpen && (
+				<div className={cls.slidebar}>
+					<Slidebar />
+				</div>
+			)}
+			<div className={cls.filterBlock}>
+				<div className={cls.icon} onClick={handleClickFilterIcon}>
+					<SliderIcon />
+				</div>
+				<div className={cls.dropBlock}>
+					<DropDown
+						placeholder='Country'
+						options={optionsCountry}
+						isActive={activeDropdown === 'country'}
+						onClick={handleDropdownClick.bind(null, 'country')}
+						onClose={closeDropdowns}
+					/>
+				</div>
+				<div className={cls.dropBlock}>
+					<DropDown
+						placeholder='City'
+						options={optionsCity}
+						isActive={activeDropdown === 'city'}
+						onClick={handleDropdownClick.bind(null, 'city')}
+						onClose={closeDropdowns}
+					/>{' '}
+				</div>
+				<div className={cls.dropBlock}>
+					<DropDown
+						placeholder='Category'
+						options={optionsCategory}
+						isActive={activeDropdown === 'category'}
+						onClick={handleDropdownClick.bind(null, 'category')}
+						onClose={closeDropdowns}
+					/>
+				</div>
+				<div className={cls.seacrh}>
+					<Input
+						labelStart={<Search />}
+						classOfBlock='split'
+						placeholder='search'
+						className={cls.searchInput}
+					/>
+				</div>
+				<div>
+					<Button theme={ButtonTheme.DEFAULT} className={cls.button}>
+						Search
+					</Button>
+				</div>
 			</div>
 		</div>
 	)

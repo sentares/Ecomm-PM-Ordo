@@ -4,9 +4,8 @@ import { UserState } from 'entitise/User/model/selector/UserState'
 import { getData } from 'features/product-card/model/slices/ProductSlice'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import FilterBlock from 'widgets/FilterBlock/tsx/FilterBlock'
-import Navbar from 'widgets/NavBar/tsx/Navbar'
 import './index.scss'
+import Layout from './layout/Layout'
 import { AppRouter } from './providers/router'
 import ToastProvier from './providers/toast'
 
@@ -25,9 +24,9 @@ function App() {
 	return (
 		<div>
 			<ToastProvier />
-			<Navbar />
-			<FilterBlock />
-			<AppRouter />
+			<Layout>
+				<AppRouter />
+			</Layout>
 		</div>
 	)
 }

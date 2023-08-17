@@ -1,4 +1,5 @@
 import CartPage from 'pages/cart/tsx/CartPage'
+import { CatalogPage } from 'pages/catalog'
 import { MainPage } from 'pages/main'
 import { ProductPage } from 'pages/product'
 import { SignIn } from 'pages/sign-in'
@@ -11,6 +12,7 @@ export enum AppRoutes {
 	SIGNUP = 'signUp',
 	CART = 'cart',
 	PRODUCT = 'product',
+	CATALOG = 'catalog',
 	// last
 	// NOT_FOUND = 'not_found'
 }
@@ -21,6 +23,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.SIGNUP]: 'signUp',
 	[AppRoutes.CART]: 'cart',
 	[AppRoutes.PRODUCT]: 'product/:id',
+	[AppRoutes.CATALOG]: 'catalog',
 
 	// last
 	// [AppRoutes.NOT_FOUND]: '*',
@@ -46,5 +49,9 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.PRODUCT]: {
 		path: RoutePath.product,
 		element: <ProductPage />,
+	},
+	[AppRoutes.CATALOG]: {
+		path: RoutePath.catalog,
+		element: <CatalogPage />,
 	},
 }

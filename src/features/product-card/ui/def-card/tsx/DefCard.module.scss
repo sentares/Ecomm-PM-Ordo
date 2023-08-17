@@ -6,11 +6,13 @@
 	border: 2px solid #d1d1d1;
 	background: #fcfcfc;
 	font-family: var(--poppins);
-	&.blurred {
-		backdrop-filter: blur(80px);
-		background-color: rgba (0, 0, 0, 0.9);
-		background: #dedede;
-		transition: 0.3s;
+	transition: 0.3s;
+	// margin: 5px;
+	&:hover {
+		padding: 1px;
+		scale: 1.03;
+		box-shadow: rgba(46, 46, 46, 0.507) 0px 3px 8px;
+		border: 2px solid #fcfcfc;
 	}
 	.imageBlock {
 		width: 100%;

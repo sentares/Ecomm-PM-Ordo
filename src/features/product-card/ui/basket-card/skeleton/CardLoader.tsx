@@ -11,12 +11,12 @@ const BasketProductsLoader = (props: any) => {
 			foregroundColor='#ededed'
 			{...props}
 		>
-			<rect x='258' y='6' rx='14' ry='14' width='660' height='252' />
-			<rect x='8' y='6' rx='14' ry='14' width='238' height='252' />
-			<rect x='258' y='274' rx='14' ry='14' width='660' height='252' />
-			<rect x='8' y='274' rx='14' ry='14' width='238' height='252' />
-			{/* <rect x='258' y='542' rx='14' ry='14' width='660' height='252' />
-			<rect x='8' y='542' rx='14' ry='14' width='238' height='252' /> */}
+			<rect x='10%' y='0' rx='14' ry='14' width='58%' height='252' />
+			<rect x='0' y='0' rx='14' ry='14' width='238' height='252' />
+			<rect x='10%' y='274' rx='14' ry='14' width='58%' height='252' />
+			<rect x='0' y='274' rx='14' ry='14' width='238' height='252' />
+			<rect x='69.8%' y='0' rx='14' ry='14' width='30%' height='528' />
+			{/* <rect x='8' y='542' rx='14' ry='14' width='238' height='252' /> */}
 		</ContentLoader>
 	)
 }

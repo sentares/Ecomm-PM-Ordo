@@ -39,7 +39,7 @@ const SwiperDefCard = () => {
 			>
 				<ArrowLeft />
 			</Button>
-			<div className={cls.productsContainer} style={{ width: 1081 }}>
+			<div className={cls.productsContainer} style={{ width: 1102 }}>
 				<div
 					className={cls.products}
 					style={{

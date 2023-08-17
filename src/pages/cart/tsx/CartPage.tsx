@@ -34,7 +34,7 @@ const CartPage = () => {
 	useEffect(() => {}, [dataBasket])
 
 	return (
-		<>
+		<div className={cls.cart}>
 			{dataBasket.length ? (
 				<div className={cls.cartPage}>
 					{!isLoading || (dataBasket.length && basketProducts.length) ? (
@@ -54,16 +54,20 @@ const CartPage = () => {
 										)
 									})}
 							</div>
-							<BasketForm prodCount={dataBasket.length} total={totalPrice} />
+							<div className={cls.formBlock}>
+								<BasketForm prodCount={dataBasket.length} total={totalPrice} />
+							</div>
 						</div>
 					) : (
-						<BasketProductsLoader />
+						<div className={cls.loader}>
+							<BasketProductsLoader />
+						</div>
 					)}
 				</div>
 			) : (
 				<div className={cls.nothing}>Basket is empty...</div>
 			)}
-		</>
+		</div>
 	)
 }
 
