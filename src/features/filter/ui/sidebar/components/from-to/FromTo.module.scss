@@ -1,0 +1,16 @@
+.fromTo {
+	margin-top: 18px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	.ft {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		color: #282828;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+}

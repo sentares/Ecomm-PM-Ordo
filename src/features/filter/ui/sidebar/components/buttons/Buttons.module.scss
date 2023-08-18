@@ -1,0 +1,28 @@
+.buttons {
+	margin-top: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	color: #fff;
+	display: flex;
+	margin-bottom: 28px;
+	.but {
+		padding: 7px 20px;
+		text-align: center;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		background: white;
+		color: #282828;
+	}
+	.but_active {
+		padding: 7px 20px;
+		text-align: center;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+	}
+}

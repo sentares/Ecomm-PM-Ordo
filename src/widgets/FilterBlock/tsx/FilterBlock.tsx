@@ -1,18 +1,17 @@
 //@ts-ignore
+import { ThunkDispatch } from '@reduxjs/toolkit'
+import { FilterState } from 'features/filter/model/selectors/FilterState'
+import { filterActions } from 'features/filter/model/slices/FilterSlice'
+import { DropDown } from 'features/filter/ui/block/tsx/dropDown/DropDown'
+import { Search } from 'lucide-react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+//@ts-ignore
 import { ReactComponent as SliderIcon } from 'shared/assets/svg/mifilter.svg'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
-import { DropDown } from 'features/filter/tsx/dropDown/DropDown'
 import Input from 'shared/ui/Input/Input'
-import { Select } from 'shared/ui/select/Select'
-import cls from './FilterBlock.module.scss'
-import { useState } from 'react'
-import { Search } from 'lucide-react'
-import { useDispatch } from 'react-redux'
-import { ThunkDispatch } from '@reduxjs/toolkit'
-import { filterActions } from 'features/filter/model/slices/FilterSlice'
-import { useSelector } from 'react-redux'
-import { FilterState } from 'features/filter/model/selectors/FilterState'
 import Slidebar from 'widgets/SideBar/tsx/Sidebar'
+import cls from './FilterBlock.module.scss'
 
 const FilterBlock = () => {
 	const optionsCategory = [
@@ -81,11 +80,13 @@ const FilterBlock = () => {
 
 	return (
 		<div className={cls.filterContainer}>
-			{isSlidebarOpen && (
-				<div className={cls.slidebar}>
-					<Slidebar />
-				</div>
-			)}
+			<div
+				className={`${cls.slidebar} ${
+					isSlidebarOpen ? cls['slidebar-open'] : ''
+				}`}
+			>
+				<Slidebar />
+			</div>
 			<div className={cls.filterBlock}>
 				<div className={cls.icon} onClick={handleClickFilterIcon}>
 					<SliderIcon />

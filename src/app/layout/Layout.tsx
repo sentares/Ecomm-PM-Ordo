@@ -12,7 +12,7 @@ const Layout = (props: any) => {
 
 	return (
 		<>
-			{pathname === '/' ? (
+			{pathname === '/signIn' || pathname === '/signUp' ? (
 				<>
 					<Navbar />
 					{children}
@@ -21,7 +21,6 @@ const Layout = (props: any) => {
 				<div>
 					<Navbar />
 					<FilterBlock />
-					{isSlidebarOpen && <Sidebar />}
 					<div className=''>{children}</div>
 				</div>
 			)}
