@@ -12,7 +12,9 @@ const Layout = (props: any) => {
 
 	return (
 		<>
-			{pathname === '/signIn' || pathname === '/signUp' ? (
+			{pathname === '/signIn' ||
+			pathname === '/signUp' ||
+			pathname === '/cart' ? (
 				<>
 					<Navbar />
 					{children}

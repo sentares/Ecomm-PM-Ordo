@@ -6,11 +6,13 @@ import {
 	removeFromCart,
 } from 'features/product-card/model/slices/ProductSlice'
 import { ResponseDataType } from 'features/product-card/model/types/dataType'
-import { Trash, Trash2 } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import CountUp from 'react-countup'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Button from 'shared/ui/button/Button'
+import Input from 'shared/ui/Input/Input'
 import CounterCard from '../../def-card/components/counter/CounterCard'
 import cls from './BasketCard.module.scss'
 
@@ -102,8 +104,12 @@ const BasketCard = (props: BasketCardProps) => {
 						</div>
 					</div>
 					<div className={cls.total}>
-						<div>
+						<div className={cls.oplata}>
 							<CounterCard count={count} changeCount={changeCount} />
+							<div className={cls.promo}>
+								<Input placeholder='ПРОМОКОД/КУПОН' classOfStyle={'promo'} />
+								<Button className={cls.but}>GO</Button>
+							</div>
 						</div>
 						<div className={cls.totPrice}>
 							{' '}

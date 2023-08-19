@@ -1,17 +1,13 @@
-import { useSelector } from 'react-redux'
-import { ProductState } from 'features/product-card'
-import { useDispatch } from 'react-redux'
 import { ThunkDispatch } from '@reduxjs/toolkit'
-import { useEffect } from 'react'
-import { useParams } from 'react-router'
-import {
-	getOneData,
-	getProductsToCart,
-} from 'features/product-card/model/slices/ProductSlice'
-import cls from './CartPage.module.scss'
-import BasketCard from 'features/product-card/ui/basket-card/tsx/BasketCard'
-import BasketProductsLoader from 'features/product-card/ui/basket-card/skeleton/CardLoader'
+import Credit from 'features/basket/tsx/credit/Credit'
 import BasketForm from 'features/basket/tsx/form/BasketForm'
+import { ProductState } from 'features/product-card'
+import { getProductsToCart } from 'features/product-card/model/slices/ProductSlice'
+import BasketProductsLoader from 'features/product-card/ui/basket-card/skeleton/CardLoader'
+import BasketCard from 'features/product-card/ui/basket-card/tsx/BasketCard'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import cls from './CartPage.module.scss'
 
 const CartPage = () => {
 	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
@@ -30,8 +26,6 @@ const CartPage = () => {
 		}
 		return total
 	}, 0)
-
-	useEffect(() => {}, [dataBasket])
 
 	return (
 		<div className={cls.cart}>
@@ -55,7 +49,8 @@ const CartPage = () => {
 									})}
 							</div>
 							<div className={cls.formBlock}>
-								<BasketForm prodCount={dataBasket.length} total={totalPrice} />
+								<BasketForm dataBasket={dataBasket} total={totalPrice} />
+								<Credit />
 							</div>
 						</div>
 					) : (

@@ -1,0 +1,29 @@
+.infoForm {
+	width: 100%;
+	margin-top: 46px;
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		width: 78%;
+		margin-top: 16px;
+	}
+	.but {
+		margin-top: 12px;
+		display: flex;
+		padding: 8px;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		border-radius: 4px;
+		// background: #565656;
+		color: #fff;
+		text-align: center;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 16px; /* 160% */
+		letter-spacing: 0.6px;
+		width: 30%;
+	}
+}

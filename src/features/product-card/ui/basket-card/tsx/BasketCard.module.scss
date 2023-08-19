@@ -72,6 +72,25 @@
 			display: flex;
 			flex-direction: column;
 			gap: 8px;
+			width: 100%;
+			.oplata {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.promo {
+					display: flex;
+					align-items: center;
+					gap: 4%;
+					width: 54%;
+					.but {
+						font-size: 18px;
+						width: 30%;
+						padding: 8px;
+						border-radius: 14px;
+					}
+				}
+			}
 			.totPrice {
 				color: #282828;
 				font-family: 'Poppins';
