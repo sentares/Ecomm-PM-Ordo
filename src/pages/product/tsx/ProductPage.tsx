@@ -1,6 +1,7 @@
 import { ThunkDispatch } from '@reduxjs/toolkit'
 import { ProductState } from 'features/product-card'
 import { getOneData } from 'features/product-card/model/slices/ProductSlice'
+import SmallCard from 'features/product-card/ui/small-card/tsx/SmallCard'
 import SoloProductCard from 'features/product-card/ui/solo-card/tsx/SoloCard'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,18 +13,27 @@ const ProductPage = () => {
 	const { id } = params
 
 	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
-	const { products, oneProduct, isLoading, error } = useSelector(ProductState)
+	const { products } = useSelector(ProductState)
 
 	useEffect(() => {
 		if (id) {
 			const numericId = parseInt(id)
 			dispatch(getOneData(numericId))
 		}
-	}, [dispatch])
+		window.scrollTo(0, 0)
+	}, [dispatch, params])
 
 	return (
 		<div className={cls.productPage}>
-			<SoloProductCard oneProduct={oneProduct} isLoading={isLoading} />
+			<SoloProductCard />
+			<div className={cls.rec}>
+				<p className={cls.lorem}>Lorem ipsum</p>
+				<div className={cls.cardBlock}>
+					{products.map(item => (
+						<SmallCard product={item} />
+					))}
+				</div>
+			</div>
 		</div>
 	)
 }

@@ -107,7 +107,7 @@ const DefCard = (props: DefCardProps) => {
 					Топ продаж
 				</div>
 				<img
-					src={product && product.images[0].image}
+					src={product && product?.images[0]?.image}
 					style={{ width: '100%', height: '100%' }}
 					className={cls.img}
 				/>

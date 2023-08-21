@@ -1,42 +1,8 @@
 .SoloProduct {
 	display: flex;
 	// align-items: center;
-	width: 100%;
-	.imageBlock {
-		max-width: 584px;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		.mainImage {
-			width: 536px;
-			height: 486px;
-			flex-shrink: 0;
-			border-radius: 11px;
-			background: #d9d9d9;
-			position: relative;
-			box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-			.image {
-				width: 100%;
-				height: 100%;
-				border-radius: 10px;
-			}
-			.like {
-				position: absolute;
-				top: 25px;
-				left: 25px;
-				transition: 0.3s;
-				color: #6a6969;
-				width: 34px;
-				height: 34px;
-				&:hover {
-					color: #af0e0e;
-					fill: #af0e0e;
-					scale: 1.2;
-				}
-			}
-		}
-	}
+	// width: 100%;
+
 	.infoBlock {
 		margin-left: 108px;
 		display: flex;
@@ -53,17 +19,18 @@
 				line-height: 150%; /* 36px */
 			}
 			.des {
-				margin-top: 20px;
+				margin-top: 10px;
 				color: #737576;
-				font-family: 'Poppins';
 				font-size: 16px;
 				font-style: normal;
 				font-weight: 700;
 				line-height: 150%; /* 24px */
-				flex-wrap: nowrap;
+				display: block; /* Добавьте этот стиль */
+				white-space: normal; /* Или white-space: break-spaces; */
 			}
+
 			.price {
-				margin-top: 16px;
+				margin-top: 26px;
 				color: #7b7b7b;
 				font-family: 'Poppins';
 				font-size: 48px;
@@ -77,6 +44,15 @@
 				align-items: center;
 				gap: 20px;
 				color: #7b7b7b;
+			}
+			.cat {
+				margin-top: 20px;
+				color: #737576;
+				font-family: 'Poppins';
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 700;
+				line-height: 150%; /* 24px */
 			}
 		}
 		.actions {

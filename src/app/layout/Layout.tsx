@@ -10,11 +10,14 @@ const Layout = (props: any) => {
 	const { pathname } = useLocation()
 	const { isSlidebarOpen } = useSelector(FilterState)
 
+	const isProductPage = pathname.startsWith('/product/')
+
 	return (
 		<>
 			{pathname === '/signIn' ||
 			pathname === '/signUp' ||
-			pathname === '/cart' ? (
+			pathname === '/cart' ||
+			isProductPage ? (
 				<>
 					<Navbar />
 					{children}

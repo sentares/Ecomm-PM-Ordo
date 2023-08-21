@@ -6,6 +6,7 @@ import { DropDown } from 'features/filter/ui/block/tsx/dropDown/DropDown'
 import { Search } from 'lucide-react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 //@ts-ignore
 import { ReactComponent as SliderIcon } from 'shared/assets/svg/mifilter.svg'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
@@ -63,6 +64,7 @@ const FilterBlock = () => {
 
 	const [activeDropdown, setActiveDropdown] = useState('')
 	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+	const navigate = useNavigate()
 
 	const handleDropdownClick = (dropdownId: string) => {
 		setActiveDropdown(dropdownId)
@@ -77,6 +79,10 @@ const FilterBlock = () => {
 	}
 
 	const { isSlidebarOpen } = useSelector(FilterState)
+
+	const handleSearch = () => {
+		navigate('/catalog')
+	}
 
 	return (
 		<div className={cls.filterContainer}>
@@ -127,7 +133,11 @@ const FilterBlock = () => {
 					/>
 				</div>
 				<div>
-					<Button theme={ButtonTheme.DEFAULT} className={cls.button}>
+					<Button
+						theme={ButtonTheme.DEFAULT}
+						className={cls.button}
+						onClick={handleSearch}
+					>
 						Search
 					</Button>
 				</div>

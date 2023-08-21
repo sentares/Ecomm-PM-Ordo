@@ -1,21 +1,14 @@
-import { IProduct } from 'entitise/Product/model/type'
-import Button from 'shared/ui/button/Button'
-import PhLoader from '../skeleton/CardLoader'
-import SoloCardLoader from '../skeleton/CardLoader'
-import { ButtonTheme } from 'shared/ui/button/Button'
-import cls from './SoloCard.module.scss'
-import { Heart } from 'lucide-react'
-import { useDispatch } from 'react-redux'
 import { ThunkDispatch } from '@reduxjs/toolkit'
+import { ProductState } from 'features/product-card/model/selectors/ProductState'
 import { likeProduct } from 'features/product-card/model/slices/ProductSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import Button, { ButtonTheme } from 'shared/ui/button/Button'
+import ImageBlock from '../components/image-block/tsx/ImageBlock'
+import cls from './SoloCard.module.scss'
 
-interface SoloProductProps {
-	oneProduct: IProduct
-	isLoading: boolean
-}
+const SoloProductCard = () => {
+	const { oneProduct, isLoading } = useSelector(ProductState)
 
-const SoloProductCard = (props: SoloProductProps) => {
-	const { oneProduct, isLoading } = props
 	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
 	const handleLike = () => {
@@ -25,30 +18,21 @@ const SoloProductCard = (props: SoloProductProps) => {
 	return (
 		<>
 			<div className={cls.SoloProduct}>
-				<div className={cls.imageBlock}>
-					<div className={cls.mainImage}>
-						{!isLoading && oneProduct ? (
-							oneProduct.images && (
-								<img
-									src={`${oneProduct.images[0]?.image}`}
-									className={cls.image}
-								/>
-							)
-						) : (
-							<PhLoader />
-						)}
-						<Heart cursor='pointer' className={cls.like} onClick={handleLike} />
-					</div>
-				</div>
+				<ImageBlock handleLike={handleLike} />
 				<div className={cls.infoBlock}>
 					<div className={cls.text}>
 						<h1>{oneProduct.name}</h1>
 						<p className={cls.des}>{oneProduct.description}</p>
-						<div className={cls.inf}>
-							<label>Brand: {oneProduct.brand}</label>
-							<label>Country: {oneProduct.issuing_country}</label>
-						</div>
 						<p className={cls.price}>{oneProduct.price}$</p>
+						<div className={cls.inf}>
+							<label>
+								Brand: <strong>{oneProduct.brand}</strong>
+							</label>
+							<label>
+								Country: <strong>{oneProduct.issuing_country}</strong>
+							</label>
+						</div>
+						<p className={cls.cat}>Category: {oneProduct.category}</p>
 					</div>
 					<div className={cls.actions}>
 						<div className={cls.buy}>
