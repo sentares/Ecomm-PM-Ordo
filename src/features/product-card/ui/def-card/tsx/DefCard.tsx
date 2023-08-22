@@ -95,12 +95,13 @@ const DefCard = (props: DefCardProps) => {
 		if (isAuth) {
 			setLiked(!liked)
 			dispatch(likeProduct(id))
+		} else {
+			toast('Чтобы добавить в избранное пройдите регистрацию')
 		}
-		toast('Чтобы добавить в избранное пройдите регистрацию')
 	}
 
 	return (
-		<div className={`${cls.defCard} ${openModal ? cls.blurred : ''}`}>
+		<div className={cls.defCard}>
 			<div className={cls.imageBlock}>
 				<div className={cls.character}>
 					<Star width={20} color='orange' fill='orange' />

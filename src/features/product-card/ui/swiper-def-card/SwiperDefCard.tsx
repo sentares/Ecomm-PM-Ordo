@@ -1,9 +1,7 @@
-import { ThunkDispatch } from '@reduxjs/toolkit'
 import { ProductState } from 'features/product-card/model/selectors/ProductState'
-import { getData } from 'features/product-card/model/slices/ProductSlice'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
 import CardLoader from '../def-card/skeleton/PhLoader'
 import DefCard from '../def-card/tsx/DefCard'
@@ -12,8 +10,6 @@ import cls from './SwiperDefCard.module.scss'
 const SwiperDefCard = () => {
 	const [swipePosition, setSwipePosition] = useState(0)
 	const containerWidth = 367 //width of card
-
-	const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
 	const handleNextClick = () => {
 		if (swipePosition < products.length - 2) {
@@ -27,7 +23,7 @@ const SwiperDefCard = () => {
 		}
 	}
 
-	const { products, dataBasket, isLoading, error } = useSelector(ProductState)
+	const { products } = useSelector(ProductState)
 
 	return (
 		<div className={cls.swiper}>

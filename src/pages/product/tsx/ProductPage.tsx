@@ -30,7 +30,7 @@ const ProductPage = () => {
 				<p className={cls.lorem}>Lorem ipsum</p>
 				<div className={cls.cardBlock}>
 					{products.map(item => (
-						<SmallCard product={item} />
+						<SmallCard product={item} key={item.id} />
 					))}
 				</div>
 			</div>

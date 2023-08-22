@@ -1,6 +1,5 @@
 import { ThunkDispatch } from '@reduxjs/toolkit'
-import { userActions } from 'entitise/User'
-import { UserState } from 'entitise/User/model/selector/UserState'
+import { userActions, UserState } from 'entitise/User'
 import { getData } from 'features/product-card/model/slices/ProductSlice'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

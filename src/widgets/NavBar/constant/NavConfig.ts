@@ -1,7 +1,7 @@
 import { UserState } from 'entitise/User/model/selector/UserState'
 import { Home, LogIn, Phone, ShoppingCart, User } from 'lucide-react'
 import { useSelector } from 'react-redux'
-//@ts-ignore
+// @ts-ignore
 import { ReactComponent as WhatsapIcon } from 'shared/assets/svg/bi_whatsapp.svg'
 
 interface NavItem {

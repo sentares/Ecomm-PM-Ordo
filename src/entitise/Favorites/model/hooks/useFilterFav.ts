@@ -19,7 +19,6 @@ const useFilterFav = () => {
 			if (updatedProducts) {
 				dispatch(productAction.setData(updatedProducts))
 			}
-			// В updatedProducts теперь есть копия products с полем liked
 		} else if (product) {
 			// Обработка, если product не является массивом
 		}

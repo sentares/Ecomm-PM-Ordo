@@ -1,0 +1,18 @@
+.demoInfo {
+	margin-top: 34px;
+	display: flex;
+	align-items: center;
+	gap: 62px;
+	.demos {
+		max-width: 244px;
+		.dem {
+			margin-top: 20px;
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			.icon {
+				width: 32px;
+			}
+		}
+	}
+}

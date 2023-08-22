@@ -22,6 +22,7 @@ const ImageCarusel = (props: ImageCaruselProps) => {
 			<div>
 				{images.map(item => (
 					<div
+						key={item.image}
 						className={
 							activeImage === item.image ? cls.activeImageCard : cls.imageCard
 						}

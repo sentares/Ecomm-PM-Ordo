@@ -97,7 +97,6 @@ export const getData = () => async (dispatch: Function) => {
 	try {
 		dispatch(productAction.setLoading())
 		const data = await ProductService.getProducts()
-
 		dispatch(productAction.setData(data))
 	} catch (error) {
 		dispatch(productAction.setError('Ошибка запроса. Повторите позже.'))
@@ -108,7 +107,9 @@ export const getOneData = (id: number) => async (dispatch: Function) => {
 	try {
 		dispatch(productAction.setLoading())
 		const data = await ProductService.getOneProduct(id)
-		dispatch(productAction.setOneData(data))
+		if (data) {
+			dispatch(productAction.setOneData(data))
+		}
 	} catch (error) {
 		dispatch(productAction.setError('Ошибка запроса. Повторите позже.'))
 	}
@@ -144,8 +145,6 @@ export const getProductsToCart = (id: number) => async (dispatch: Function) => {
 
 export const likeProduct = (id: number) => async (dispatch: Function) => {
 	try {
-		console.log('call')
-
 		dispatch(productAction.setLoading())
 		await ProductService.likeProduct(id)
 	} catch (error) {

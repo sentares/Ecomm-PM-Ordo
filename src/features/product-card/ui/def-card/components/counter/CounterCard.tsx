@@ -9,6 +9,7 @@ interface CounterCardProps {
 
 const CounterCard = (props: CounterCardProps) => {
 	const { count, openModal, changeCount } = props
+
 	return (
 		<div className={cls.counterCard}>
 			<Button

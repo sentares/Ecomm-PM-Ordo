@@ -6,17 +6,17 @@ import { HOST } from 'shared/constant/hostApi'
 import { loadCartFromLocalStorage } from '../storage/localStorageUtils'
 import { ResponseDataType } from '../types/dataType'
 
+const token = localStorage.getItem(USER_STORAGE_KEY)
+const config = token
+	? {
+			headers: {
+				Authorization: `Token ${token}`,
+			},
+	  }
+	: {}
+
 export const ProductService = {
 	getProducts: async (): Promise<IProduct[]> => {
-		const token = localStorage.getItem(USER_STORAGE_KEY)
-		const config = token
-			? {
-					headers: {
-						Authorization: `Token ${token}`,
-					},
-			  }
-			: {}
-
 		try {
 			if (token) {
 				const [productsResponse, favoritesResponse] = await Promise.all([
@@ -44,9 +44,20 @@ export const ProductService = {
 	},
 
 	getOneProduct: async (id: number) => {
-		const response = await axios.get(`${HOST}/products/${id}`)
-		if (response) {
-			return response.data
+		const [productsResponse, favoritesResponse] = await Promise.all([
+			axios.get<IProduct[]>(`${HOST}/products/${id}`),
+			axios.get<IProduct[]>(`${HOST}/favorites/`, config),
+		])
+
+		const product: IProduct | any = productsResponse.data
+		const favoriteProducts = favoritesResponse.data
+
+		if (product && favoriteProducts) {
+			const isLiked = favoriteProducts.some(
+				favoriteProduct => favoriteProduct.id === id
+			)
+			product.liked = isLiked
+			return product
 		}
 	},
 
@@ -79,21 +90,12 @@ export const ProductService = {
 	},
 
 	likeProduct: async (id: number) => {
-		const token = localStorage.getItem(USER_STORAGE_KEY)
-
-		const config = {
-			headers: {
-				Authorization: `Token ${token}`,
-			},
-		}
-
 		try {
 			const response = await axios.post(
 				`${HOST}/products/${id}/add_to_favorites/`,
 				null,
 				config
 			)
-			console.log(response)
 			toast.success(response.data.detail)
 		} catch (error) {
 			console.error('Error:', error)
