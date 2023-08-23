@@ -147,6 +147,8 @@ export const likeProduct = (id: number) => async (dispatch: Function) => {
 	try {
 		dispatch(productAction.setLoading())
 		await ProductService.likeProduct(id)
+		const data = await ProductService.getProducts()
+		dispatch(productAction.setData(data))
 	} catch (error) {
 		dispatch(productAction.setError('Ошибка запроса. Повторите позже.'))
 	}

@@ -1,19 +1,19 @@
 import Dashboard from 'features/dashboard/tsx/Dashboard'
 import { FilterState } from 'features/filter/model/selectors/FilterState'
-import { filterSlice } from 'features/filter/model/slices/FilterSlice'
 import SwiperDefCard from 'features/product-card/ui/swiper-def-card/SwiperDefCard'
 import MainReviewCard from 'features/review/review-card/MainReviewCard'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Button from 'shared/ui/button/Button'
 import Advantage from '../components/advantage/Advantage'
 import InfoContainer from '../components/info-container/InfoContainer'
-import NewsLoader from '../components/news/skeleton/NewsLoader'
 import News from '../components/news/tsx/News'
 import cls from './MainPage.module.scss'
 
 const MainPage = () => {
 	const { isSlidebarOpen } = useSelector(FilterState)
+
 	return (
 		<div className={cls.main}>
 			{isSlidebarOpen && <div className={cls.blured} />}

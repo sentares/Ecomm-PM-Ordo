@@ -34,9 +34,9 @@ const DefCard = (props: DefCardProps) => {
 		item => item.productId === product?.id
 	)
 
-	const closeModal = () => {
-		setOpenModal(false)
-	}
+	useEffect(() => {
+		product && typeof product.liked === 'boolean' && setLiked(product.liked)
+	}, [product])
 
 	useEffect(() => {
 		if (isProductInBasket) {
@@ -74,10 +74,6 @@ const DefCard = (props: DefCardProps) => {
 		[dispatch]
 	)
 
-	useEffect(() => {
-		product && typeof product.liked === 'boolean' && setLiked(product.liked)
-	}, [product])
-
 	const handleAdd = (count: number, isProductInBasket: boolean) => {
 		if (count && product) {
 			addItem({ productId: product.id, count, inBasket: true })
@@ -98,6 +94,10 @@ const DefCard = (props: DefCardProps) => {
 		} else {
 			toast('Чтобы добавить в избранное пройдите регистрацию')
 		}
+	}
+
+	const closeModal = () => {
+		setOpenModal(false)
 	}
 
 	return (

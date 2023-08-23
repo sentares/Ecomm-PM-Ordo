@@ -21,7 +21,7 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 		isSaw: false,
 	})
 
-	const { register } = useAuth()
+	const { register, isLoading } = useAuth()
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target
@@ -113,7 +113,11 @@ const SignUpBox = ({ title }: SignUpBoxProps) => {
 					</div>
 				</form>
 				<div className={cls.buttonBlock}>
-					<Button theme={ButtonTheme.BIG} onClick={handleClickAuth}>
+					<Button
+						theme={ButtonTheme.BIG}
+						onClick={handleClickAuth}
+						disabled={isLoading}
+					>
 						{title}
 					</Button>
 				</div>

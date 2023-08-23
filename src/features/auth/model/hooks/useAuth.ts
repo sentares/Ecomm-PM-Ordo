@@ -54,7 +54,7 @@ const useAuth = () => {
 			}
 		} catch (error) {
 			console.error('Error:', error)
-			toast.error('Произошла ошибка при входе')
+			toast.error('Не верная почта или пароль')
 		} finally {
 			setIsLoading(false)
 		}

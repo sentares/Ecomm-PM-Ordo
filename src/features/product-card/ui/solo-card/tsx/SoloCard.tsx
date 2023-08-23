@@ -2,6 +2,8 @@ import { ProductState } from 'features/product-card/model/selectors/ProductState
 import { Share2 } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
+import { HOST } from 'shared/constant/hostApi'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
 import DemoInfo from '../components/demo-info/DemoInfo'
 import ImageBlock from '../components/image-block/tsx/ImageBlock'
@@ -9,9 +11,10 @@ import cls from './SoloCard.module.scss'
 
 const SoloProductCard = () => {
 	const { oneProduct, isLoading } = useSelector(ProductState)
+	const { pathname } = useLocation()
 
 	const handleShare = () => {
-		const textToCopy = document.documentElement.outerHTML
+		const textToCopy = `${HOST}${pathname}`
 
 		navigator.clipboard
 			.writeText(textToCopy)
