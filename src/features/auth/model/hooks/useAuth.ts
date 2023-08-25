@@ -24,6 +24,8 @@ const useAuth = () => {
 				password,
 			})
 			if (response) {
+				console.log(response.data)
+
 				dispatch(userActions.setUser(response.data.user))
 				dispatch(userActions.setIsAuth(true))
 				toast.success(response.data.message)
@@ -31,7 +33,7 @@ const useAuth = () => {
 			}
 		} catch (error) {
 			console.error('Error:', error)
-			toast.error('Пользователь с таким ником уже существует')
+			toast.error(`Пользователь с именем ${username} уже существует`)
 		} finally {
 			setIsLoading(false)
 		}

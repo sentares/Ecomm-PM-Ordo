@@ -16,6 +16,7 @@ interface SelectProps {
 	clickedItem?: Option
 	handleClickeItem?: (item: Option) => void
 	handleClickRemoveItem?: () => void
+	listStyles?: {}
 }
 
 export const Select = memo((props: SelectProps) => {
@@ -24,6 +25,7 @@ export const Select = memo((props: SelectProps) => {
 		className,
 		placeholder,
 		clickedItem,
+		listStyles,
 		handleClickeItem,
 		handleClickRemoveItem,
 	} = props
@@ -46,7 +48,7 @@ export const Select = memo((props: SelectProps) => {
 				<ChevronDown className={`${cls.icon} ${cls.iconClosed}`} />
 			</button>
 			{open && (
-				<ul className={cls['dropdown-list']}>
+				<ul className={cls['dropdown-list']} style={listStyles}>
 					{options &&
 						options.map(item => (
 							<li key={item.id} className={cls['dropdown-block']}>

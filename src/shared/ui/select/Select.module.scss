@@ -1,5 +1,5 @@
 /* Dropdown.css */
-.dropdown {
+.Select {
 	position: relative;
 	display: inline-block;
 	border-radius: 12px;
@@ -35,6 +35,8 @@
 	font-weight: 400;
 	line-height: normal;
 	text-transform: capitalize;
+	transition: all 0.3s;
+
 	&:hover {
 		background-color: #ececec;
 	}
@@ -44,6 +46,9 @@
 	}
 
 	&.iconOpen {
+		transition: all 0.3s;
+		background-color: #e0e0e0;
+		scale: 1.07;
 		.icon {
 			transform: rotate(-180deg);
 		}
@@ -96,11 +101,23 @@
 }
 
 .dropdown-list {
+	width: 100%;
 	list-style: none;
 	background-color: #fff;
 	padding: 1px 0;
 	border-radius: 8px;
 	margin-top: 4px;
+	z-index: 40;
+	animation: fadeInDropdown 0.3s ease-in-out;
+}
+
+@keyframes fadeInDropdown {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .dropdown-block {

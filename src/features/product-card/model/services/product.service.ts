@@ -96,6 +96,8 @@ export const ProductService = {
 				null,
 				config
 			)
+			console.log(response)
+
 			toast.success(response.data.detail)
 		} catch (error) {
 			console.error('Error:', error)
