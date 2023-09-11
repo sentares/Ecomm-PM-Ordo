@@ -1,8 +1,7 @@
 import Dashboard from 'features/dashboard/tsx/Dashboard'
 import { FilterState } from 'features/filter/model/selectors/FilterState'
-import SwiperDefCard from 'features/product-card/ui/swiper-def-card/SwiperDefCard'
+import SwiperDefCard from 'features/product-card/ui/tsx/swiper-def-card/SwiperDefCard'
 import MainReviewCard from 'features/review/review-card/MainReviewCard'
-import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Button from 'shared/ui/button/Button'
@@ -13,6 +12,15 @@ import cls from './MainPage.module.scss'
 
 const MainPage = () => {
 	const { isSlidebarOpen } = useSelector(FilterState)
+	const testArr = [
+		{ id: 1, title: 'hello' },
+		{ id: 2, title: 'world' },
+		{ id: 3, title: '!!!' },
+	]
+
+	const handleClickItem = (id: number) => {
+		console.log(id, 'id')
+	}
 
 	return (
 		<div className={cls.main}>

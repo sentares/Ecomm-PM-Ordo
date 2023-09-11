@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { ButtonHTMLAttributes, memo, ReactNode } from 'react'
+import { ButtonHTMLAttributes, memo, ReactNode } from 'react'
 import cls from './Button.module.scss'
 
 export enum ButtonTheme {

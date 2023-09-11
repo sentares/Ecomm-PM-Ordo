@@ -97,6 +97,8 @@ export const getData = () => async (dispatch: Function) => {
 	try {
 		dispatch(productAction.setLoading())
 		const data = await ProductService.getProducts()
+		console.log(data)
+
 		dispatch(productAction.setData(data))
 	} catch (error) {
 		dispatch(productAction.setError('Ошибка запроса. Повторите позже.'))

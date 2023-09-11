@@ -2,9 +2,7 @@ import { FilterState } from 'features/filter/model/selectors/FilterState'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import FilterBlock from 'widgets/FilterBlock/tsx/FilterBlock'
-import Footer from 'widgets/Footer/tsx/Footer'
 import Navbar from 'widgets/NavBar/tsx/Navbar'
-import Sidebar from 'widgets/SideBar/tsx/Sidebar'
 
 const Layout = (props: any) => {
 	const { children } = props
@@ -28,7 +26,7 @@ const Layout = (props: any) => {
 					<Navbar />
 					<FilterBlock />
 					<div className=''>{children}</div>
-					<Footer />
+					{/* <Footer /> */}
 				</div>
 			)}
 		</>

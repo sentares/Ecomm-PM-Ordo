@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Button from 'shared/ui/button/Button'
 import Input from 'shared/ui/Input/Input'
-import CounterCard from '../../def-card/components/counter/CounterCard'
+import CounterCard from '../../../components/counter/CounterCard'
 import cls from './BasketCard.module.scss'
 
 interface BasketCardProps {

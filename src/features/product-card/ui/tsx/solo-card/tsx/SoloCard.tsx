@@ -1,5 +1,6 @@
 import { ProductState } from 'features/product-card/model/selectors/ProductState'
 import { Share2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
@@ -7,11 +8,14 @@ import { HOST } from 'shared/constant/hostApi'
 import Button, { ButtonTheme } from 'shared/ui/button/Button'
 import DemoInfo from '../components/demo-info/DemoInfo'
 import ImageBlock from '../components/image-block/tsx/ImageBlock'
+import CounterCard from '../../../components/counter/CounterCard'
 import cls from './SoloCard.module.scss'
 
 const SoloProductCard = () => {
-	const { oneProduct, isLoading } = useSelector(ProductState)
+	const { oneProduct, isLoading, dataBasket } = useSelector(ProductState)
 	const { pathname } = useLocation()
+
+	const [isProductInBasket, setIsProductInBasket] = useState(false)
 
 	const handleShare = () => {
 		const textToCopy = `${HOST}${pathname}`
@@ -25,6 +29,14 @@ const SoloProductCard = () => {
 				console.error('Ошибка при копировании: ', error)
 			})
 	}
+
+	useEffect(() => {
+		if (oneProduct) {
+			setIsProductInBasket(
+				dataBasket.some(item => item.productId === oneProduct.id)
+			)
+		}
+	}, [oneProduct])
 
 	return (
 		<>
@@ -50,7 +62,11 @@ const SoloProductCard = () => {
 					</div>
 					<div className={cls.actions}>
 						<div className={cls.buy}>
-							<Button theme={ButtonTheme.DEFAULT}>Buy</Button>
+							{isProductInBasket ? (
+								<CounterCard count={1} changeCount={handleShare} />
+							) : (
+								<Button theme={ButtonTheme.DEFAULT}>Buy</Button>
+							)}
 						</div>
 						<DemoInfo />
 					</div>
